@@ -1,5 +1,5 @@
 homepage: "https://www.owox.com"
 documentation: "https://www.owox.com"
 versions:
-  - sha:
+  - sha: 6edb17b449c08bbd9f13d7dcb898d02543ecdb98
     changeNotes: Initial release.
