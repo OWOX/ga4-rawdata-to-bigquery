@@ -1,0 +1,5 @@
+homepage: "https://www.owox.com"
+documentation: "https://www.owox.com"
+versions:
+  - sha:
+    changeNotes: Initial release.
