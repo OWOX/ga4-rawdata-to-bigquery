@@ -1,5 +1,7 @@
 homepage: "https://www.owox.com"
 documentation: "https://support.owox.com/hc/en-us/articles/6231018188052"
 versions:
+  - sha: 0a20c0401139ea0c99f2ff3fc301f55ce1869984
+    changeNotes: Add tests.
   - sha: 1d618abfe7109087334a8e1c890651757e21c6bc
     changeNotes: Initial release.
