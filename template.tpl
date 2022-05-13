@@ -74,7 +74,12 @@ const options = {
   skipInvalidRows: false,
 };
 
-BigQuery.insert(connectionInfo, rows, options, data.gtmOnSuccess, (err) => {
+let insertToBq = BigQuery.insert;
+if (data.insertToBigQuery) {
+  insertToBq = data.insertToBigQuery;
+}
+
+insertToBq(connectionInfo, rows, options, data.gtmOnSuccess, (err) => {
   log("BigQuery insert error: ", JSON.stringify(err));
   data.gtmOnFailure();
 });
@@ -206,11 +211,24 @@ ___SERVER_PERMISSIONS___
 
 ___TESTS___
 
-scenarios: []
+scenarios:
+- name: InsertToBigQueryCallWithCorrectParams
+  code: "const log = require(\"logToConsole\");\nconst Math = require('Math');\nconst\
+    \ JSON = require(\"JSON\");\n\nconst projectId = 'a';\nconst datasetId = 'b';\n\
+    const tableId = 'c';\nconst eventData = {'event': 'data'};\nconst timestamp =\
+    \ 11111111;\n\nconst mockData = {\n  'tableId': projectId + '.' + datasetId +\
+    \ '.' + tableId,\n  'logging': true,\n  'insertToBigQuery': (connectionInfo, rows)\
+    \ => {\n    assertThat(rows.length).isEqualTo(1);\n    assertThat(rows[0].createdAt).isEqualTo(Math.ceil(timestamp\
+    \ / 1000));\n    assertThat(JSON.parse(rows[0].rawData)).isEqualTo(eventData);\n\
+    \    \n    assertThat(connectionInfo.projectId).isEqualTo(projectId);\n    assertThat(connectionInfo.datasetId).isEqualTo(datasetId);\n\
+    \    assertThat(connectionInfo.tableId).isEqualTo(tableId);\n  }\n};\n\nmock('getAllEventData',\
+    \ () => {\n  return eventData;\n});\n\nmock('getTimestamp', () => {\n  return\
+    \ timestamp;\n});\n\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n"
+setup: ''
 
 
 ___NOTES___
 
-Created on 12/05/2022, 17:49:31
+Created on 13/05/2022, 16:46:03
 
 
