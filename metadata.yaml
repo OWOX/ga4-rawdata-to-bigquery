@@ -1,5 +1,5 @@
-homepage: "https://www.owox.com"
-documentation: "https://support.owox.com/hc/en-us/articles/6231018188052"
+homepage: "https://www.owox.com/c/59o"
+documentation: "https://www.owox.com/c/59n"
 versions:
   - sha: 0a20c0401139ea0c99f2ff3fc301f55ce1869984
     changeNotes: Add tests.
