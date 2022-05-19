@@ -1,6 +1,8 @@
 homepage: "https://www.owox.com/c/59o"
 documentation: "https://www.owox.com/c/59n"
 versions:
+  - sha: 926e091711e13ac969ac0d849c1d94a371c24b2c
+    changeNotes: Rename template
   - sha: a49cd286b52833dd585a3b4cb29f9fdf4f5599b4
     changeNotes: Update template description and BigQuery filed name
   - sha: 0a20c0401139ea0c99f2ff3fc301f55ce1869984
